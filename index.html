@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CareerPath | Find a career that fits you</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600&family=Zilla+Slab:wght@500;600;700&display=swap">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header class="site-header">
+    <nav class="navbar container">
+      <a class="logo" href="#">CareerPath</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open navigation" aria-expanded="false">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+          stroke-linecap="round" aria-hidden="true">
+          <path d="M4 7h16M4 12h16M4 17h16" />
+        </svg>
+      </button>
+      <div class="nav-links" id="navLinks">
+        <a href="#explore">Careers</a>
+        <a href="#how-it-works">How to use this page</a>
+        <a href="#about">About</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <h1>Find out what different careers involve</h1>
+          <p class="hero-copy">Read short profiles of careers in technology, healthcare, business, design, science and
+            public service. Each one covers the work, the skills that help and how people usually get started.</p>
+          <a class="button" href="#explore">Browse careers</a>
+        </div>
+        <aside class="note" aria-label="What each career profile covers">
+          <p class="note-title">Every profile covers</p>
+          <ul>
+            <li>What the work involves</li>
+            <li>Skills that help</li>
+            <li>How people usually get started</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section class="explore-section" id="explore">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <h2>Browse careers</h2>
+            <p class="section-copy">Search by job title, skill or field, or pick a field below.</p>
+          </div>
+          <span class="career-count" id="careerCount" aria-live="polite">12 careers</span>
+        </div>
+
+        <label class="search-box">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+            stroke-linecap="round" aria-hidden="true">
+            <circle cx="11" cy="11" r="6.5" />
+            <path d="M20 20l-4.5-4.5" />
+          </svg>
+          <input type="search" id="careerSearch" placeholder="Try “design”, “SQL” or “nurse”"
+            aria-label="Search careers">
+        </label>
+
+        <div class="category-chips" id="categoryChips">
+          <button class="chip active" data-category="all">All</button>
+          <button class="chip" data-category="Technology">Technology</button>
+          <button class="chip" data-category="Healthcare">Healthcare</button>
+          <button class="chip" data-category="Business">Business</button>
+          <button class="chip" data-category="Creative">Creative</button>
+          <button class="chip" data-category="Science">Science</button>
+          <button class="chip" data-category="Public Service">Public service</button>
+        </div>
+
+        <div class="career-list" id="careerGrid"></div>
+
+        <div class="empty-state" id="emptyState" hidden>
+          <h3>Nothing matches that search</h3>
+          <p>Check the spelling, try a shorter word, or pick a different field.</p>
+          <button class="text-button" id="clearFilters">Clear search and filters</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="steps-section" id="how-it-works">
+      <div class="container">
+        <h2>How to use this page</h2>
+        <ol class="steps">
+          <li>
+            <span class="step-number">1</span>
+            <div>
+              <h3>Browse</h3>
+              <p>Scroll through the list, or search for a job title, a skill or something you enjoy doing.</p>
+            </div>
+          </li>
+          <li>
+            <span class="step-number">2</span>
+            <div>
+              <h3>Read the details</h3>
+              <p>Open any career to see what the work involves, which skills help and the usual way in.</p>
+            </div>
+          </li>
+          <li>
+            <span class="step-number">3</span>
+            <div>
+              <h3>Check the official source</h3>
+              <p>Entry rules for exams and courses such as NEET, CA and UPSC change from time to time, so confirm them
+                on the official website before you plan.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="about-section" id="about">
+      <div class="container">
+        <h2>About this page</h2>
+        <p>CareerPath is a small project that helps students learn what different professions involve. It is a starting
+          point, not personal career advice, so talk to teachers, family and people who do the work as well.</p>
+        <a href="#explore" class="about-link">Back to the careers list</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <a class="logo" href="#">CareerPath</a>
+      <span>© <span id="year"></span> CareerPath</span>
+    </div>
+  </footer>
+
+  <div class="modal-backdrop" id="careerModal" aria-hidden="true">
+    <section class="career-modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal-close" id="modalClose" aria-label="Close details">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+          stroke-linecap="round" aria-hidden="true">
+          <path d="M6 6l12 12M18 6L6 18" />
+        </svg>
+      </button>
+      <div class="modal-icon" id="modalIcon"></div>
+      <p class="modal-category" id="modalCategory"></p>
+      <h2 id="modalTitle">Career title</h2>
+      <p class="modal-description" id="modalDescription"></p>
+      <div class="modal-columns">
+        <div>
+          <h3>What you may do</h3>
+          <p id="modalWork"></p>
+        </div>
+        <div>
+          <h3>Useful skills</h3>
+          <ul id="modalSkills"></ul>
+        </div>
+      </div>
+      <div class="education-note">
+        <h3>Getting started</h3>
+        <p id="modalEducation"></p>
+      </div>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
